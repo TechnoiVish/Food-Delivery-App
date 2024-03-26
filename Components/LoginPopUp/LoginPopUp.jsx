@@ -5,7 +5,7 @@ const LoginPopUp = ({setShowLogin}) => {
     const [currState,setCurrState]=useState("Sign Up")
   return (
     <div className='login-popup'>
-<form className='login-popup-container'>
+<form className='login-popup-container'name="login-form">
     <div className="login-popup-title">
         <h2>{currState}</h2>
         <img onClick={()=>setShowLogin(false)} src={assets.cross_icon} alt="" />

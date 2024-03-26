@@ -6,13 +6,16 @@ import { assets } from '../../src/assets/assets'
 import { Link } from 'react-router-dom';
 import { StoreContext } from '../../src/Context/StoreContext';
 const Navbar = ({setShowLogin}) => {
-  const [menuBar,setmenuBar]=useState("menuBar")
+  const [menuBar,setmenuBar]=useState("Home")
   const {getTotalCartAmount}=useContext(StoreContext);
    return (
+   
+    
     <div className='navbar'>
+     
 <Link to='/'><img src={assets.logo} className='logo' /></Link>
 <ul className="navbar-menu">
-    <Link to='/' onClick={()=>setmenuBar("Home")}className={menuBar==='Home'?'active':''}>Home </Link>
+    <Link to='/' onClick={()=>setmenuBar("Home")}className={menuBar==='Home'?'active':''}> Home </Link>
     <a href='#explore-menu' onClick={()=>setmenuBar("menu")}className={menuBar==='menu'?'active':''}>menu</a>
     <a href='#app-download' onClick={()=>setmenuBar("mobile-app")}className={menuBar==='mobile-app'?'active':''}>mobile-app</a>
     <a href='#footer' onClick={()=>setmenuBar("contact-us")}className={menuBar==='contact us'?'active':''}>contact us</a>
@@ -26,7 +29,9 @@ const Navbar = ({setShowLogin}) => {
     </div>
     <button onClick={()=>setShowLogin(true)}className='bg-transparent fs-6 px-4 py-1 rounded-5'>Sign In</button>
 </div>
+
     </div>
+  
   )
 }
 export default Navbar

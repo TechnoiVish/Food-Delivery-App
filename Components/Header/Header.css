@@ -31,7 +31,7 @@ border: 1px solid black;
 border-radius: 50px;
 background-color: #fff;
 color: black;
-padding:.8vw 1.5vw;
+padding:.6vw 1.5vw;
 font-size: max(1vw,14px);
 }
 .header-contents button:hover{
