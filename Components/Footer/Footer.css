@@ -40,7 +40,7 @@ font-size: 30px;
 }
 .footer-content-left>img{
 width:150px;
-height:60px;
+height:30px;
 }
 .footer-social-icons img {
     width: 2.5rem;
@@ -65,7 +65,10 @@ height:60px;
     .footer-copyright{
         text-align: center;
     }
-   .footer-content-center li,.footer-content-right li{
+   .footer-content-center li{
+    padding: 5px;
+   }
+   .footer-content-right li{
     padding: 5px;
    }
 }

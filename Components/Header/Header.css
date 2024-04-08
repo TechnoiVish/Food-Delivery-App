@@ -61,3 +61,13 @@ font-size: max(1vw,14px);
     padding: 1vw 3vw;
   }
 }
+@media(max-width:750px){
+
+  .header-contents button{
+    padding: 1vw 2vw;
+    font-size: 8px;
+  }
+}
+@media (max-width: 200px) {
+    
+}
