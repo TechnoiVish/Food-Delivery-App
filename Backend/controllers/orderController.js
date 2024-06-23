@@ -5,7 +5,7 @@ import Stripe from 'stripe';
 
 const stripe=new Stripe(process.env.STRIPE_SECRET_KEY)
 const placeOrder=async(req,res)=>{
-    const frontend_url="http://localhost:5174"
+    const frontend_url="http://localhost:5173"
 try{
     const newOrder=new orderModel({
 userId:req.body.userId,
@@ -14,7 +14,7 @@ amount:req.body.amount,
 address:req.body.address
     })
     await newOrder.save();
-    await userModel.findByIdAndUpdate(req.body.userId,{cartData});
+    await userModel.findByIdAndUpdate(req.body.userId,{cartData:{}});
 const line_items=req.body.items.map((item)=>({
     price_data:{
         currency:"inr",
@@ -50,6 +50,27 @@ console.log(error);
 res.json({success:false,message:"Error"});
 }
 }
+const verifyOrder=async (req,res)=>{
+
+    const {orderId,success}=req.body;
+    try{
+        if(success=="true"){
+    await orderModel.findByIdAndUpdate(orderId,{payment:true});
+    res.json({success:true,message:"Paid"})
+    }
+    else{
+        await orderModel.findByIdAndDelete(orderId);
+        res.json({success:false,message:"Not Paid"})
+    }
+    }
+    catch (error)
+    {
+        console.log(error)
+        res.json({success:false,message:"Error"})
+    }
+    
+    
+    }
 const userOrders=async(req,res)=>{
     try{
 const orders=await orderModel.find({userId:req.body.userId});
@@ -80,4 +101,4 @@ try{
     }
  }
 
-export {placeOrder,userOrders,listOrders,updateStatus}
+export {placeOrder,verifyOrder,userOrders,listOrders,updateStatus}
