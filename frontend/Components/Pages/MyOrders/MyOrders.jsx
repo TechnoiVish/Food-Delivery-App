@@ -8,7 +8,7 @@ const MyOrders = () => {
   const [data,setData]=useState([]);
 
   const fetchOrders=async()=>{
-    const response=await axios.post(url+"/api/order/userorders",{headers:{token}});
+    const response=await axios.post(url+"/api/order/userorders",{},{headers:{token}});
     setData(response.data.data);
     console.log(response.data.data);
   }
@@ -19,10 +19,11 @@ const MyOrders = () => {
     }
   },[token])
   return (
-    <div className='my-order'>
+    <div className='my-orders'>
       <h2>My Orders</h2>
       <div className="container">
-        {data?.map((order,index)=>{
+        
+        {data.map((order,index)=>{
           return(
             <div key={index} className="my-orders-order">
             <img src={assets.parcel_icon} alt="" />

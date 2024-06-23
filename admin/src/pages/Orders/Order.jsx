@@ -19,7 +19,7 @@ else{
 toast.error("Error")
 }
 
-const statusHandler=async(event,orderId)=>{
+const statusHandler = async(event,orderId)=>{
 const response=await axios.post(url+"/api/order/status",{orderId,status:event.target.value})
 if(response.data.success){
   await fetAllOrders();
@@ -33,12 +33,12 @@ fetAllOrders();
     <div className='order add'>
       <h3>Order Page</h3>
       <div className="order-list">
-        {Order.map((order,index)=>{
+        {orders.map((order,index)=>{
           <div key={index} className="order-item">
 <img src={assets.parcel_icon} alt="" />
 <div>
   <p className="order-item-food">
-    {order.map((item,index)=>{
+    {order.items.map((item,index)=>{
 if(index===order.item.length-1){
   return item.name + " x " + item.quantity
 }
